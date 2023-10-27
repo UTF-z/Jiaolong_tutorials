@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.10)
+project(plate)
+set(CXX_STANDARD_REQUIRED True)
+set(CXX_STANDARD 11)
+add_executable(plate main.cpp)
+
+find_package(OpenCV REQUIRED)
+if(OpenCV_FOUND)
+    target_include_directories(plate PUBLIC ${OpenCV_INCLUDE_DIRS})
+    target_link_libraries(plate ${OpenCV_LIBS})
+else()
+    message("OpenCV not found")
+endif()

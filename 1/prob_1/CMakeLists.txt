@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.10)
+project(apple)
+set(CXX_STANDARD_REQUIRED True)
+set(CXX_STANDARD 11)
+add_executable(apple main.cpp)
+
+find_package(OpenCV REQUIRED)
+if(OpenCV_FOUND)
+    target_include_directories(apple PUBLIC ${OpenCV_INCLUDE_DIRS})
+    target_link_libraries(apple ${OpenCV_LIBS})
+else()
+    message(FATAL_ERROR "OpenCV library not found")
+endif()
